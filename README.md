@@ -1,1 +1,1 @@
-# This is a multi-room platformer where you can experience different levels made by me
+# This is a multi-room platformer game where you can experience different levels made by me
