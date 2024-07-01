@@ -6,12 +6,17 @@ class Player {
             x:100,
             y:100,
         }
-
+        //for adding gravity
+        this.velocity = {
+            x: 0,
+            y: 0,
+        }
         this.width = 100
         this.height = 100
         this.sides = {
             bottom: this.position.y + this.height
         }
+        this.gravity = 1
     }
 
     //to set appearance of player
@@ -23,9 +28,17 @@ class Player {
 
     update() {
          //condition to make it stop 
-        if(this.sides.bottom < canvas.height) {
-            this.position.y++
-            this.sides.bottom = this.position.y + this.height
+        this.position.x += this.velocity.x
+        this.position.y += this.velocity.y
+        this.sides.bottom = this.position.y + this.height
+
+        //above bottom of canvas
+        if(this.sides.bottom + this.velocity.y < canvas.height) {
+
+            //gravity
+            this.velocity.y += this.gravity
         }
+        //to make the player stop at bottom of canvas
+        else this.velocity.y = 0
     }
 }

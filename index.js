@@ -10,6 +10,20 @@
     //creating a player
     const player = new Player()
 
+    //for fixing the bug related to multiple keys pressed together
+    const keys = {
+        w: {
+            pressed: false,
+        },
+        a: {
+            pressed: false,
+        },
+        d: {
+            pressed: false,
+        },
+    }
+
+    
     //animation loop
     // let bottom = y + 100
     function animate() {
@@ -19,9 +33,15 @@
         c.fillStyle = 'white'
         //takes four arguments x axis,y axis,width,height and makes rectangle out of it
         c.fillRect(0, 0, canvas.width, canvas.height)
-  
+        
+        player.velocity.x = 0
+        if (keys.d.pressed)  player.velocity.x = 5
+        else if (keys.a.pressed) player.velocity.x = -5
+    
         player.draw()
         player.update()
         
     }
     animate()
+
+    
